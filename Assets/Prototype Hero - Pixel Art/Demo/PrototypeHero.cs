@@ -203,7 +203,7 @@ public class PrototypeHero : MonoBehaviour {
         }
 
         // Parry & parry stance
-        else if (Input.GetMouseButtonDown(1) && !m_dodging && !m_ledgeGrab && !m_ledgeClimb && !m_crouching && m_grounded)
+        else if (Input.GetKeyDown(KeyCode.Z) && !m_dodging && !m_ledgeGrab && !m_ledgeClimb && !m_crouching && m_grounded)
         {
             // Parry
             // Used when you are in parry stance and something hits you
@@ -223,7 +223,7 @@ public class PrototypeHero : MonoBehaviour {
         }
 
         //Up Attack
-        else if (Input.GetMouseButtonDown(0) && Input.GetKey("w") && !m_dodging && !m_ledgeGrab && !m_ledgeClimb && !m_crouching && m_grounded && m_timeSinceAttack > 0.2f)
+        else if (Input.GetKeyDown(KeyCode.LeftControl) && Input.GetKey(KeyCode.UpArrow) && !m_dodging && !m_ledgeGrab && !m_ledgeClimb && !m_crouching && m_grounded && m_timeSinceAttack > 0.2f)
         {
             m_animator.SetTrigger("UpAttack");
 
@@ -235,7 +235,7 @@ public class PrototypeHero : MonoBehaviour {
         }
 
         //Attack
-        else if (Input.GetMouseButtonDown(0) && !m_dodging && !m_ledgeGrab && !m_ledgeClimb && !m_crouching && m_grounded && m_timeSinceAttack > 0.2f)
+        else if (Input.GetKeyDown(KeyCode.LeftControl) && !m_dodging && !m_ledgeGrab && !m_ledgeClimb && !m_crouching && m_grounded && m_timeSinceAttack > 0.2f)
         {
             // Reset timer
             m_timeSinceAttack = 0.0f;
@@ -258,7 +258,7 @@ public class PrototypeHero : MonoBehaviour {
         }
 
         //Air Slam Attack
-        else if (Input.GetMouseButtonDown(0) && Input.GetKey("s") && !m_ledgeGrab && !m_ledgeClimb && !m_grounded)
+        else if (Input.GetKeyDown(KeyCode.LeftControl) && Input.GetKey(KeyCode.DownArrow) && !m_ledgeGrab && !m_ledgeClimb && !m_grounded)
         {
             m_animator.SetTrigger("AttackAirSlam");
             m_body2d.velocity = new Vector2(0.0f, -m_jumpForce);
@@ -269,7 +269,7 @@ public class PrototypeHero : MonoBehaviour {
         }
 
         // Air Attack Up
-        else if (Input.GetMouseButtonDown(0) && Input.GetKey("w") && !m_dodging && !m_ledgeGrab && !m_ledgeClimb && !m_crouching && !m_grounded && m_timeSinceAttack > 0.2f)
+        else if (Input.GetKeyDown(KeyCode.LeftControl) && Input.GetKey(KeyCode.UpArrow) && !m_dodging && !m_ledgeGrab && !m_ledgeClimb && !m_crouching && !m_grounded && m_timeSinceAttack > 0.2f)
         {
             Debug.Log("Air attack up");
             m_animator.SetTrigger("AirAttackUp");
@@ -279,7 +279,7 @@ public class PrototypeHero : MonoBehaviour {
         }
 
         // Air Attack
-        else if (Input.GetMouseButtonDown(0) && !m_dodging && !m_ledgeGrab && !m_ledgeClimb && !m_crouching && !m_grounded && m_timeSinceAttack > 0.2f)
+        else if (Input.GetKeyDown(KeyCode.LeftControl) && !m_dodging && !m_ledgeGrab && !m_ledgeClimb && !m_crouching && !m_grounded && m_timeSinceAttack > 0.2f)
         {
             m_animator.SetTrigger("AirAttack");
 
@@ -298,7 +298,7 @@ public class PrototypeHero : MonoBehaviour {
         }
 
         // Throw
-        else if(Input.GetKeyDown("f") && m_grounded && !m_dodging && !m_ledgeGrab && !m_ledgeClimb)
+        else if(Input.GetKeyDown(KeyCode.X) && m_grounded && !m_dodging && !m_ledgeGrab && !m_ledgeClimb)
         {
             m_animator.SetTrigger("Throw");
 
@@ -307,7 +307,7 @@ public class PrototypeHero : MonoBehaviour {
         }
 
         // Ledge Climb
-        else if(Input.GetKeyDown("w") && m_ledgeGrab)
+        else if(Input.GetKey(KeyCode.UpArrow) && m_ledgeGrab)
         {
             DisableWallSensors();
             m_ledgeClimb = true;
@@ -317,13 +317,13 @@ public class PrototypeHero : MonoBehaviour {
         }
 
         // Ledge Drop
-        else if (Input.GetKeyDown("s") && m_ledgeGrab)
+        else if (Input.GetKey(KeyCode.DownArrow) && m_ledgeGrab)
         {
             DisableWallSensors();
         }
 
         //Jump
-        else if (Input.GetButtonDown("Jump") && (m_grounded || m_wallSlide) && !m_dodging && !m_ledgeGrab && !m_ledgeClimb && !m_crouching && m_disableMovementTimer < 0.0f)
+        else if (Input.GetKeyDown(KeyCode.LeftAlt) && (m_grounded || m_wallSlide) && !m_dodging && !m_ledgeGrab && !m_ledgeClimb && !m_crouching && m_disableMovementTimer < 0.0f)
         {
             // Check if it's a normal jump or a wall jump
             if(!m_wallSlide)
@@ -342,19 +342,19 @@ public class PrototypeHero : MonoBehaviour {
         }
 
         //Crouch / Stand up
-        else if (Input.GetKeyDown("s") && m_grounded && !m_dodging && !m_ledgeGrab && !m_ledgeClimb && m_parryTimer < 0.0f)
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && m_grounded && !m_dodging && !m_ledgeGrab && !m_ledgeClimb && m_parryTimer < 0.0f)
         {
             m_crouching = true;
             m_animator.SetBool("Crouching", true);
             m_body2d.velocity = new Vector2(m_body2d.velocity.x / 2.0f, m_body2d.velocity.y);
         }
-        else if (Input.GetKeyUp("s") && m_crouching)
+        else if (Input.GetKeyUp(KeyCode.DownArrow) && m_crouching)
         {
             m_crouching = false;
             m_animator.SetBool("Crouching", false);
         }
         //Walk
-        else if (m_moving && Input.GetKey(KeyCode.LeftControl))
+        else if (m_moving && Input.GetKey(KeyCode.C))
         {
             m_animator.SetInteger("AnimState", 2);
             m_maxSpeed = m_walkSpeed;

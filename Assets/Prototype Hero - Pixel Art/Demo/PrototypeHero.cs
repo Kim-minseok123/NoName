@@ -105,13 +105,13 @@ public class PrototypeHero : MonoBehaviour {
             m_moving = false;
 
         // Swap direction of sprite depending on move direction
-        if (inputRaw > 0 && !m_dodging && !m_wallSlide && !m_ledgeGrab && !m_ledgeClimb)
+        if (inputRaw > 0 && !m_dodging && !m_wallSlide && !m_ledgeGrab && !m_ledgeClimb && m_disableMovementTimer < 0.0f)
         {
             m_SR.flipX = false;
             m_facingDirection = 1;
         }
             
-        else if (inputRaw < 0 && !m_dodging && !m_wallSlide && !m_ledgeGrab && !m_ledgeClimb)
+        else if (inputRaw < 0 && !m_dodging && !m_wallSlide && !m_ledgeGrab && !m_ledgeClimb && m_disableMovementTimer < 0.0f)
         {
             m_SR.flipX = true;
             m_facingDirection = -1;

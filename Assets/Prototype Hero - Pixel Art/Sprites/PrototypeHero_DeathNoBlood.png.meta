@@ -68,6 +68,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -77,8 +79,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -99,9 +101,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
@@ -456,6 +461,22 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      PrototypeHero_DeathNoBlood_1: 21300002
+      PrototypeHero_DeathNoBlood_6: 21300012
+      PrototypeHero_DeathNoBlood_5: 21300010
+      PrototypeHero_DeathNoBlood_2: 21300004
+      PrototypeHero_DeathNoBlood_10: 21300020
+      PrototypeHero_DeathNoBlood_14: 21300028
+      PrototypeHero_DeathNoBlood_7: 21300014
+      PrototypeHero_DeathNoBlood_4: 21300008
+      PrototypeHero_DeathNoBlood_13: 21300026
+      PrototypeHero_DeathNoBlood_11: 21300022
+      PrototypeHero_DeathNoBlood_3: 21300006
+      PrototypeHero_DeathNoBlood_8: 21300016
+      PrototypeHero_DeathNoBlood_0: 21300000
+      PrototypeHero_DeathNoBlood_9: 21300018
+      PrototypeHero_DeathNoBlood_12: 21300024
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

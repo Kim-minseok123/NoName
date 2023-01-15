@@ -6,7 +6,7 @@ public class TitleManager : MonoBehaviour
 {
     
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         Screen.SetResolution(1920, 1080, true);
         StartCoroutine(BlackPannel.instance.FadeOut());

@@ -7967,6 +7967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SettingUI: {fileID: 1587656529}
+  TitleMenu: {fileID: 181539623}
 --- !u!1 &1635075633
 GameObject:
   m_ObjectHideFlags: 0
@@ -9269,7 +9270,7 @@ PrefabInstance:
     - target: {fileID: 5772086707060191405, guid: 033e03fc56ef37f49b636a319158ac9f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 033e03fc56ef37f49b636a319158ac9f, type: 3}

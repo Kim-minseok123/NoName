@@ -3,7 +3,11 @@ using System.Collections;
 
 public class PrototypeHero : MonoBehaviour {
 
-    public float      m_runSpeed = 4.5f;
+    public static PrototypeHero instance;
+    public Status status;
+    public UnitCode UnitCode;
+
+    private float      m_runSpeed = 4.5f;
     public float      m_walkSpeed = 2.0f;
     public float      m_jumpForce = 7.5f;
     public float      m_dodgeForce = 8.0f;
@@ -39,13 +43,21 @@ public class PrototypeHero : MonoBehaviour {
     public float                m_maxSpeed = 4.5f;
 
     // Use this for initialization
+    private void Awake()
+    {
+        if (instance != null) Destroy(gameObject);
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
     void Start ()
     {
+        status = new Status();
+        status = status.SetUnitStatus(UnitCode.Player);
         m_animator = GetComponentInChildren<Animator>();
         m_body2d = GetComponent<Rigidbody2D>();
         m_SR = GetComponentInChildren<SpriteRenderer>();
         m_gravity = m_body2d.gravityScale;
-
+        m_runSpeed = status.moveSpeed;
         m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_Prototype>();
         m_wallSensorR1 = transform.Find("WallSensor_R1").GetComponent<Sensor_Prototype>();
         m_wallSensorR2 = transform.Find("WallSensor_R2").GetComponent<Sensor_Prototype>();

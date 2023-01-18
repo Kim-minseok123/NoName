@@ -52,7 +52,9 @@ public class BGMManager : MonoBehaviour
                 NowBGMname = name;
             }
     }
-
+    public void StopBGM() {
+        BGM.Stop();
+    }
     // Start is called before the first frame update
 
     public void BGMAudioControl()

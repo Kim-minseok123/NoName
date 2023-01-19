@@ -20,7 +20,7 @@ public class StoryTextData {
     public StoryTextData() {
         StoryText[0] = "......";
         StoryText[1] = "You are here again.";
-        StoryText[2] = "Did you find your Name \nthis time?";
+        StoryText[2] = "Did you find your Name \nthis try?";
         StoryText[3] = "What is Your Name...";
         StoryText[4] = "No Name...";
         StoryText[5] = "";

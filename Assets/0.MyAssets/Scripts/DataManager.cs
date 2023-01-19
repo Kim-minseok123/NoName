@@ -49,6 +49,13 @@ public class DataManager : MonoBehaviour
     public void SaveGameData()
     {
         // 클래스를 Json 형식으로 전환 (true : 가독성 좋게 작성)
+        if (PrototypeHero.instance != null) {
+            data.maxHp = PrototypeHero.instance.status.maxHp;
+            data.nowHp = PrototypeHero.instance.status.nowHp;
+            data.atkDmg = PrototypeHero.instance.status.atkDmg;
+            data.moveSpeed = PrototypeHero.instance.status.moveSpeed;
+            Debug.Log("능럭치 저장");
+        }
         string ToJsonData = JsonUtility.ToJson(data, true);
         string filePath = Application.persistentDataPath + "/" + GameDataFileName;
 

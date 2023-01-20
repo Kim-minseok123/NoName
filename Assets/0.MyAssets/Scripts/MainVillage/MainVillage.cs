@@ -8,6 +8,7 @@ public class MainVillage : MonoBehaviour
     void Start()
     {
         StartCoroutine(BlackPannel.instance.FadeOut());
+        BGMManager.instance.PlayBGM("Main");
     }
 
     // Update is called once per frame

@@ -42,7 +42,6 @@ public class BGMManager : MonoBehaviour
     }
     public void PlayBGM(string name)
     {
-        if (NowBGMname.Equals(name)) return;
 
         for (int i = 0; i < BGMList.Length; ++i)
             if (BGMList[i].name.Equals(name))

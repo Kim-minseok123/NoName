@@ -8,7 +8,9 @@ public class FirstStoryStart : MonoBehaviour
     public TextMeshProUGUI Story;
     public TextMeshProUGUI PlayerText;
     public Animator PlayerDeath;
-    public 
+    public GameObject Player;
+    public GameObject TutoCanvas;
+    public GameObject StoryPlayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,7 @@ public class FirstStoryStart : MonoBehaviour
         StartCoroutine(BlackPannel.instance.FadeOut());
         PlayerDeath.SetTrigger("Death");
         StartCoroutine(StoryStart());
+        Debug.Log("½ÇÇàµÊ0");
         DataManager.Instance.data.isFirstPlay = false;
     }
 
@@ -25,7 +28,12 @@ public class FirstStoryStart : MonoBehaviour
             yield return StartCoroutine(Typing(PlayerText, StoryTextData.StoryText[DataManager.Instance.data.CurrentStoryNumber], 0.05f));
             yield return new WaitForSeconds(2f);
             yield return StartCoroutine(BlackPannel.instance.FadeIn());
-            BlackPannel.instance.NextScene("MainVillage");
+            StoryPlayer.SetActive(false);
+            Story.text = "";
+            PlayerText.text = "";
+            Instantiate(Player, new Vector3(0, -2.5f, 0), Quaternion.identity);
+            TutoCanvas.SetActive(true);
+            yield return StartCoroutine(BlackPannel.instance.FadeOut());
             yield break;
         }
         yield return StartCoroutine(Typing(Story, StoryTextData.StoryText[DataManager.Instance.data.CurrentStoryNumber], 0.1f));
@@ -41,4 +49,16 @@ public class FirstStoryStart : MonoBehaviour
         }
         DataManager.Instance.data.CurrentStoryNumber++;
     }
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            StartCoroutine(Started());
+        }
+    }
+    IEnumerator Started() {
+        yield return StartCoroutine(BlackPannel.instance.FadeIn());
+        PrototypeHero.instance.Warp(new Vector3(-6.5f, -2.55f, 0));
+        BlackPannel.instance.NextScene("MainVillage");
+    }
 }
+//BlackPannel.instance.NextScene("MainVillage");

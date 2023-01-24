@@ -21,12 +21,18 @@ public class Sensor_Prototype : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        m_ColCount++;
+        if (other.tag == "Ground")
+        {
+            m_ColCount++;
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        m_ColCount--;
+        if (other.tag == "Ground")
+        {
+            m_ColCount--;
+        }
     }
 
     void Update()

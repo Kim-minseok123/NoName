@@ -62,14 +62,9 @@ public class AudioManager_PrototypeHero : MonoBehaviour
 
     private void Awake()
     {
-        if(instance != null)
-        {
-            Debug.LogError("More than one AudioManger in scene");
-        }
-        else
-        {
-            instance = this;
-        }
+        if (instance != null) Destroy(gameObject);
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()

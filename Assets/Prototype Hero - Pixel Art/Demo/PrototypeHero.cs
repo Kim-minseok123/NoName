@@ -31,6 +31,7 @@ public class PrototypeHero : MonoBehaviour {
     private bool                m_ledgeGrab = false;
     private bool                m_ledgeClimb = false;
     private bool                m_crouching = false;
+    private bool                m_DoubleJump = false;
     private Vector3             m_climbPosition;
     private int                 m_facingDirection = 1;
     private float               m_disableMovementTimer = 0.0f;
@@ -91,6 +92,7 @@ public class PrototypeHero : MonoBehaviour {
         if (!m_grounded && m_groundSensor.State())
         {
             m_grounded = true;
+            m_DoubleJump = false;
             m_animator.SetBool("Grounded", m_grounded);
         }
 
@@ -337,6 +339,7 @@ public class PrototypeHero : MonoBehaviour {
         //Jump
         else if (Input.GetKeyDown(KeyCode.LeftAlt) && (m_grounded || m_wallSlide) && !m_dodging && !m_ledgeGrab && !m_ledgeClimb && !m_crouching && m_disableMovementTimer < 0.0f)
         {
+            if (m_DoubleJump) return;
             // Check if it's a normal jump or a wall jump
             if(!m_wallSlide)
                 m_body2d.velocity = new Vector2(m_body2d.velocity.x, m_jumpForce);
@@ -345,6 +348,8 @@ public class PrototypeHero : MonoBehaviour {
                 m_body2d.velocity = new Vector2(-m_facingDirection * m_jumpForce / 2.0f, m_jumpForce);
                 m_facingDirection = -m_facingDirection;
                 m_SR.flipX = !m_SR.flipX;
+                Debug.Log("s");
+                m_DoubleJump = true;
             }
 
             m_animator.SetTrigger("Jump");
@@ -447,5 +452,8 @@ public class PrototypeHero : MonoBehaviour {
         transform.position = Vector3.zero;
         m_dead = false;
         m_animator.Rebind();
+    }
+    public void Warp(Vector3 pos) {
+        transform.position = pos;
     }
 }
